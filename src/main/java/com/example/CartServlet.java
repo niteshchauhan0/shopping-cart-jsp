@@ -20,17 +20,15 @@ public class CartServlet extends HttpServlet {
             cart = new ArrayList<>();
         }
 
-        // ✅ Handle Empty Cart Request
         String action = request.getParameter("action");
         if ("emptyCart".equals(action)) {
             cart.clear();
             session.setAttribute("cart", cart);
-            session.setAttribute("toast", "Cart has been emptied.");
+            session.setAttribute("toast", "🧺 Cart has been emptied.");
             response.sendRedirect("cart.jsp");
             return;
         }
 
-        // 🗑️ Handle item quantity removal
         String removeIdStr = request.getParameter("removeId");
         String removeQtyStr = request.getParameter("removeQty");
         if (removeIdStr != null) {
@@ -38,9 +36,7 @@ public class CartServlet extends HttpServlet {
             int removeQty = 1;
             try {
                 removeQty = Integer.parseInt(removeQtyStr);
-            } catch (NumberFormatException ignored) {
-                removeQty = 1;
-            }
+            } catch (NumberFormatException ignored) {}
 
             Iterator<Map<String, Object>> iterator = cart.iterator();
             while (iterator.hasNext()) {
@@ -49,7 +45,7 @@ public class CartServlet extends HttpServlet {
                     int currentQty = item.get("quantity") != null ? (int) item.get("quantity") : 1;
                     if (currentQty <= removeQty) {
                         iterator.remove();
-                        session.setAttribute("toast", "Item removed from cart.");
+                        session.setAttribute("toast", "🗑️ Item removed from cart.");
                     } else {
                         item.put("quantity", currentQty - removeQty);
                         session.setAttribute("toast", removeQty + " unit(s) removed from cart.");
@@ -63,7 +59,7 @@ public class CartServlet extends HttpServlet {
             return;
         }
 
-        // 📝 Handle quantity update
+ 
         String updateIdStr = request.getParameter("updateId");
         String newQtyStr = request.getParameter("newQuantity");
         if (updateIdStr != null && newQtyStr != null) {
@@ -73,19 +69,19 @@ public class CartServlet extends HttpServlet {
 
                 if (newQty <= 0) {
                     cart.removeIf(item -> (int) item.get("id") == updateId);
-                    session.setAttribute("toast", "Item removed due to zero quantity.");
+                    session.setAttribute("toast", "❌ Item removed due to zero quantity.");
                 } else {
                     for (Map<String, Object> item : cart) {
                         if ((int) item.get("id") == updateId) {
                             item.put("quantity", newQty);
-                            session.setAttribute("toast", "Quantity updated.");
+                            session.setAttribute("toast", "🔄 Quantity updated.");
                             break;
                         }
                     }
                 }
 
             } catch (NumberFormatException e) {
-                session.setAttribute("toast", "Invalid quantity update.");
+                session.setAttribute("toast", "⚠️ Invalid quantity update.");
             }
 
             session.setAttribute("cart", cart);
@@ -93,7 +89,6 @@ public class CartServlet extends HttpServlet {
             return;
         }
 
-        // ✅ Handle add to cart
         String[] selectedIds = request.getParameterValues("productId");
         String[] quantities = request.getParameterValues("quantity");
 
@@ -143,7 +138,7 @@ public class CartServlet extends HttpServlet {
         }
 
         session.setAttribute("cart", cart);
-        session.setAttribute("toast", "Product(s) added to cart!");
+        session.setAttribute("toast", "✅ Product(s) added to cart!");
         response.sendRedirect("cart.jsp");
     }
 }
