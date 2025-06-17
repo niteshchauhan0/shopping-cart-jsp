@@ -1,72 +1,92 @@
-# 🛒 Shopping Cart Web Application
+<h1 align="center">🛒 Shopping Cart JSP Web App</h1>
 
-A dynamic and responsive shopping cart web application built using **JSP, Servlets, JDBC, and MySQL**, styled with **Bootstrap 5**, and featuring modern UI enhancements like **dark mode toggle**, **live quantity updates**, and a **mobile-friendly layout**.
+<p align="center">
+  A sleek and modern shopping cart application built using <strong>JSP, Servlets, JDBC, and MySQL</strong>. <br/>
+  Designed with Glassmorphism UI, Bootstrap 5, and Dark Mode support.
+</p>
 
-## 📌 Features
+<p align="center">
+  <img src="https://img.shields.io/github/languages/top/niteshchauhan0/shopping-cart-jsp?style=for-the-badge" />
+  <img src="https://img.shields.io/github/last-commit/niteshchauhan0/shopping-cart-jsp?style=for-the-badge" />
+  <img src="https://img.shields.io/github/issues/niteshchauhan0/shopping-cart-jsp?style=for-the-badge" />
+</p>
 
-- 🧾 View product list with selection and quantity
-- 🛍️ Add items to cart
-- ✏️ Update quantities directly in the cart
-- 🧹 Empty the entire cart with a click
-- 💳 Checkout with user details and order summary
-- 🌙 Dark mode toggle (remembers user preference)
-- 🧾 Export cart or order summary (PDF/Excel) *(planned)*
-- 📱 Responsive design (mobile/tablet/desktop)
+---
+
+## 🚀 Features
+
+- ✅ Product selection and quantity update
+- ✅ Add to cart and live cart preview
+- ✅ Checkout page with order summary
+- ✅ Responsive glassmorphism UI
+- ✅ Dark mode toggle
+- ✅ Toast notifications
+- ✅ Cart persistence using `HttpSession`
+- ✅ Built using MVC pattern
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: JSP, HTML, CSS, Bootstrap 5
-- **Backend**: Java Servlets, JDBC
-- **Database**: MySQL
-- **Server**: Apache Tomcat
-- **Tools**: Eclipse IDE, Git, GitHub
+| Technology     | Purpose                        |
+|----------------|--------------------------------|
+| **JSP/Servlet**| Backend rendering & logic      |
+| **JDBC**       | Database connectivity          |
+| **MySQL**      | Product & cart data storage    |
+| **Bootstrap 5**| Styling and responsiveness     |
+| **FontAwesome**| Icons                          |
+| **Java (Servlets)** | Controller logic          |
+| **HTML/CSS/JS**| Frontend interactivity         |
 
-## 🔧 Setup Instructions
+---
 
-1. **Clone the repository**:
+## ⚙️ Setup Instructions
 
-   ```bash
-   git clone https://github.com/yourusername/ShoppingAssessment.git
-   cd ShoppingAssessment
+### 1. Clone the Repository
+```bash
+git clone https://github.com/niteshchauhan0/shopping-cart-jsp.git
+cd shopping-cart-jsp
+```
 
-2. **Import into Eclipse as an existing dynamic web project.
+### 2. Import in Eclipse or IntelliJ
+- Use Dynamic Web Project in Eclipse.
+- Add Tomcat Server Runtime.
+- Add mysql-connector-j.jar to /WEB-INF/lib/.
 
-3. **Set up MySQL Database:-
-
+### 3. Create MySQL Database
+Run this SQL:
+```bash
 CREATE DATABASE shopping_cart;
 USE shopping_cart;
 
 CREATE TABLE products (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(100),
-  price DOUBLE
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    price DOUBLE
 );
 
 INSERT INTO products (name, price) VALUES
-('Laptop', 60000),
-('Smartphone', 20000),
-('Headphones', 1500),
-('Backpack', 800),
-('Keyboard', 1200);
+('Red T-Shirt', 499.00),
+('Blue Jeans', 799.00),
+('Sneakers', 1299.00),
+('Hoodie', 999.00);
+```
 
-4. **Update DB credentials in your DBUtil.java file.
+### 4. Update DB Credentials
+Update your DBUtil.java file with:
+```bash
+String url = "jdbc:mysql://localhost:3306/shopping_cart";
+String user = "root";
+String password = "your_mysql_password";
+```
 
-5. **Deploy to Tomcat using Eclipse or manually.
+### 5. Run the Project
+Right-click → Run on Server (Tomcat)
 
-6. **Access the app at:
-http://localhost:8080/ShoppingAssessment/index.jsp
+Visit ``` http://localhost:8080/ShoppingAssessment/```
 
+---
 
-🎨 UI Highlights:-
+👨‍💻 Author
+Made with ❤️ by Nitesh Singh
 
-🔲 Bootstrap-styled cards and tables
-
-🌙 Dark mode using localStorage
-
-✅ Toast messages and visual feedback (planned)
-
-📱 Mobile-responsive layout
-
-🙌 Author:- Nitesh Singh
-
---Feel free to fork or contribute to this project. Feedback and improvements are welcome!--
