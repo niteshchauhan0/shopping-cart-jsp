@@ -87,6 +87,6 @@ Visit ``` http://localhost:8080/ShoppingAssessment/```
 
 ---
 
-👨‍💻 Author
+
 Made with ❤️ by Nitesh Singh
 
